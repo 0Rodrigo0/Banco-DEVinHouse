@@ -4,12 +4,18 @@ public class Conta {
 
     private String nome;
     private String cpf;
-    private float renda;
+    private double renda;
     private String conta;
-    private String agencia;
-    private float saldo;
+    private Agencia agencia;
+    private double saldo;
 
-    public Conta() {
+    public Conta(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.renda = renda;
+        this.conta = conta;
+        this.agencia = agencia;
+        this.saldo = saldo;
     }
 
     public String getNome() {
@@ -28,11 +34,11 @@ public class Conta {
         this.cpf = cpf;
     }
 
-    public float getRenda() {
+    public double getRenda() {
         return renda;
     }
 
-    public void setRenda(float renda) {
+    public void setRenda(double renda) {
         this.renda = renda;
     }
 
@@ -44,19 +50,19 @@ public class Conta {
         this.conta = conta;
     }
 
-    public String getAgencia() {
+    public Agencia getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(String agencia) {
+    public void setAgencia(Agencia agencia) {
         this.agencia = agencia;
     }
 
-    public float getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(float saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
