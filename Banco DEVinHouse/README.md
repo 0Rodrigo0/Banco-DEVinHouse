@@ -1,18 +1,15 @@
-## Getting Started
+## Banco DEVinHouse
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Projeto de aula que esta sendo desenvolvido como parte da nota do primeiro módulo do curso DevinHouse.
 
-## Folder Structure
+## Contatos:
 
-The workspace contains two folders by default, where:
+WhatsApp: 51 984065069.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+E-mail: rodrigobl1@yahoo.com.br.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Linkedin: https://www.linkedin.com/in/rodrigo-b-b93295a1/ .
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Obrigado!
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+°•.**\_\_\_**{°-°}**\_\_\_\_**.•°
