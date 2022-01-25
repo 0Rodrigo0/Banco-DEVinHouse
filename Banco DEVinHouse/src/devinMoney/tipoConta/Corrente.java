@@ -5,30 +5,35 @@ import devinMoney.conta.Conta;
 
 public class Corrente extends Conta {
 
-    private double chequeEspecial;
-    private double limiteChequeEspecial;
+    private double especial;
+    private double limiteEspecial;
 
     public Corrente(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo,
-            double chequeEspecial, double limiteChequeEspecial) {
+            double limiteEspecial) {
         super(nome, cpf, renda, conta, agencia, saldo);
-        this.chequeEspecial = chequeEspecial;
-        this.limiteChequeEspecial = limiteChequeEspecial;
+        this.limiteEspecial = limiteEspecial;
     }
 
-    public double getChequeEspecial() {
-        return chequeEspecial;
+    public double getEspecial() {
+        return especial;
     }
 
-    public void setChequeEspecial(double chequeEspecial) {
-        this.chequeEspecial = chequeEspecial;
+    public void setEspecial(double especial) {
+        this.especial = especial;
     }
 
-    public double getLimiteChequeEspecial() {
-        return limiteChequeEspecial;
+    public double getLimiteEspecial() {
+        return limiteEspecial;
     }
 
-    public void setLimiteChequeEspecial(double limiteChequeEspecial) {
-        this.limiteChequeEspecial = limiteChequeEspecial;
+    public void setLimiteEspecial(double limiteEspecial) {
+        this.limiteEspecial = limiteEspecial;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + ". CPF: " + getCpf() + ". Renda: " + getRenda() + "\n"
+                + "Agencia: " + getAgencia() + ". Conta: " + getConta() + "\n";
     }
 
 }

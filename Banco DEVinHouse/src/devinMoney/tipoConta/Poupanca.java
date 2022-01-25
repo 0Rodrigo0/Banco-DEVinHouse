@@ -7,30 +7,25 @@ import devinMoney.conta.Conta;
 
 public class Poupanca extends Conta {
 
-    private LocalDate meses;
-    private double rentabilidadeAnual;
+    private LocalDate tempo;
 
-    public Poupanca(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo, LocalDate meses,
-            double rentabilidadeAnual) {
+    public Poupanca(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo) {
         super(nome, cpf, renda, conta, agencia, saldo);
-        this.meses = meses;
-        this.rentabilidadeAnual = rentabilidadeAnual;
+
     }
 
-    public LocalDate getMeses() {
-        return meses;
+    public LocalDate getTempo() {
+        return tempo;
     }
 
-    public void setMeses(LocalDate meses) {
-        this.meses = meses;
+    public void setTempo(LocalDate tempo) {
+        this.tempo = tempo;
     }
 
-    public double getRentabilidadeAnual() {
-        return rentabilidadeAnual;
-    }
-
-    public void setRentabilidadeAnual(double rentabilidadeAnual) {
-        this.rentabilidadeAnual = rentabilidadeAnual;
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + ". CPF: " + getCpf() + ". Renda: " + getRenda() + "\n"
+                + "Agencia: " + getAgencia() + ". Conta: " + getConta() + "\n";
     }
 
 }
