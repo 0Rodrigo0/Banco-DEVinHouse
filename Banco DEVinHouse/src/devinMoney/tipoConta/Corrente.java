@@ -32,8 +32,11 @@ public class Corrente extends Conta {
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + ". CPF: " + getCpf() + ". Renda: " + getRenda() + "\n"
-                + "Agencia: " + getAgencia() + ". Conta: " + getConta() + "\n";
+        return "Nome: " + getNome() + "\n"
+                + "CPF: " + getCpf() + "\n"
+                + "Renda: " + getRenda() + "\n"
+                + "Agencia: " + getAgencia() + "\n"
+                + "Conta: " + getConta() + "\n";
     }
 
 }
