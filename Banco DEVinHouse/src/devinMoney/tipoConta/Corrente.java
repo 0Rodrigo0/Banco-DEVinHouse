@@ -8,9 +8,9 @@ public class Corrente extends Conta {
     private double especial;
     private double limiteEspecial;
 
-    public Corrente(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo,
+    public Corrente(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia, double saldo,
             double limiteEspecial) {
-        super(nome, cpf, renda, conta, agencia, saldo);
+        super(tipo, nome, cpf, renda, conta, agencia, saldo);
         this.limiteEspecial = limiteEspecial;
     }
 

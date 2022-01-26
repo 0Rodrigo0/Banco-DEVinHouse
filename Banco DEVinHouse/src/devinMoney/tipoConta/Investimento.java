@@ -8,8 +8,9 @@ public class Investimento extends Conta {
 
     private TipoInvestimento tipoInvestimento;
 
-    public Investimento(String nome, String cpf, double renda, String conta, Agencia agencia, double saldo) {
-        super(nome, cpf, renda, conta, agencia, saldo);
+    public Investimento(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia,
+            double saldo) {
+        super(tipo, nome, cpf, renda, conta, agencia, saldo);
 
     }
 

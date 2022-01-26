@@ -24,12 +24,12 @@ public class DevinMoneyApp {
         Scanner opcao = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<>();
 
-        Corrente c1 = new Corrente("Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 0, 2000);
-        Poupanca p1 = new Poupanca("Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 3000);
-        Investimento i1 = new Investimento("Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 4000);
-        Corrente c2 = new Corrente("Popeye", "11111111111", 1000, "0004", Agencia.FLORIANOPOLIS_001, 0, 1000);
-        Poupanca p2 = new Poupanca("Simão", "22222222222", 2000, "0005", Agencia.SAO_JOSE_002, 3500);
-        Investimento i2 = new Investimento("Pumba", "33333333333", 3000, "0006", Agencia.FLORIANOPOLIS_001, 5000);
+        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 0, 2000);
+        Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 3000);
+        Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 4000);
+        Corrente c2 = new Corrente("C", "Popeye", "11111111111", 1000, "0004", Agencia.FLORIANOPOLIS_001, 0, 1000);
+        Poupanca p2 = new Poupanca("I", "Simão", "22222222222", 2000, "0005", Agencia.SAO_JOSE_002, 3500);
+        Investimento i2 = new Investimento("I", "Pumba", "33333333333", 3000, "0006", Agencia.FLORIANOPOLIS_001, 5000);
 
         conta.add(c1);
         conta.add(p1);
@@ -39,7 +39,8 @@ public class DevinMoneyApp {
         conta.add(i2);
 
         for (Conta conta2 : conta) {
-            System.out.println(conta2);
+            if (conta2.getTipo().equals("I"))
+                System.out.println(conta2);
         }
 
         opcao.close();
