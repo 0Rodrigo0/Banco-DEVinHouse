@@ -36,7 +36,7 @@ public class Corrente extends Conta {
                 + "CPF: " + getCpf() + "\n"
                 + "Renda: " + getRenda() + "\n"
                 + "Agencia: " + getAgencia() + "\n"
-                + "Conta: " + getConta() + "\n";
+                + "Conta: " + getNumeroConta() + "\n";
     }
 
 }

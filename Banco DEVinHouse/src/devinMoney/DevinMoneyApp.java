@@ -11,25 +11,21 @@ import devinMoney.tipoConta.Poupanca;
 
 public class DevinMoneyApp {
 
-    public void saque(Conta conta) {
-
-        if (conta.getSaldo() == 0) {
-
-        }
-
+    public static void main(String[] args) {
+        DevinMoneyAp();
     }
 
-    public static void main(String[] args) {
-
-        Scanner opcao = new Scanner(System.in);
-        ArrayList<Conta> conta = new ArrayList<>();
+    public static void DevinMoneyAp() {
+        Integer opcao = 0;
+        Scanner inicio = new Scanner(System.in);
+        ArrayList<Conta> conta = new ArrayList<Conta>();
 
         Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 0, 2000);
         Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 3000);
         Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 4000);
-        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.FLORIANOPOLIS_001, 0, 1000);
-        Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.SAO_JOSE_002, 3500);
-        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.FLORIANOPOLIS_001, 5000);
+        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, 0, 1000);
+        Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.FLORIANOPOLIS_001, 3500);
+        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 5000);
 
         conta.add(c1);
         conta.add(p1);
@@ -38,12 +34,49 @@ public class DevinMoneyApp {
         conta.add(p2);
         conta.add(i2);
 
-        for (Conta conta2 : conta) {
-            // if (conta2.getTipo().equals("I"))
-            System.out.println(conta2);
-        }
+        // for (Conta conta2 : conta) {
+        // if (conta2.getTipo().equals("I"))
+        // System.out.println(conta2);
+        // }
 
-        opcao.close();
+        do {
+            System.out.println("Bem vindo");
+            System.out.println("1 - Sacar  2 - Depositar");
+            System.out.println("9 para sair");
+            opcao = inicio.nextInt();
+            if (opcao == 1) {
+                System.out.println("Digite sua conta");
+                String num = inicio.next();
+                for (Conta conta2 : conta) {
+                    if (conta2.getNumeroConta().equals(num)) {
+                        System.out.println("Ola " + conta2.getNome());
+                        System.out.println("Digite o valor do Saque");
+                        double valorSaque = inicio.nextDouble();
+                        conta2.Saque(valorSaque);
+                    } else {
+                        // System.out.println("Digite uma conta valida");
+                    }
+                }
+            }
+            if (opcao == 2) {
+                System.out.println("Digite sua conta");
+                String num = inicio.next();
+                for (Conta conta2 : conta) {
+                    if (conta2.getNumeroConta().equals(num)) {
+                        System.out.println("Ola " + conta2.getNome());
+                        System.out.println("Digite o valor do Deposito");
+                        double valorDep = inicio.nextDouble();
+                        conta2.Deposito(valorDep);
+                    } else {
+                        System.out.println("Digite uma conta valida");
+                    }
+                }
+
+            }
+
+        } while (opcao != 9);
+
+        inicio.close();
     }
 
 }

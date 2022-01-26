@@ -6,16 +6,17 @@ public class Conta {
     private String nome;
     private String cpf;
     private double renda;
-    private String conta;
+    private String numeroConta;
     private Agencia agencia;
     private double saldo;
 
-    public Conta(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia, double saldo) {
+    public Conta(String tipo, String nome, String cpf, double renda, String numeroConta, Agencia agencia,
+            double saldo) {
         this.tipo = tipo;
         this.nome = nome;
         this.cpf = cpf;
         this.renda = renda;
-        this.conta = conta;
+        this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
     }
@@ -52,12 +53,12 @@ public class Conta {
         this.renda = renda;
     }
 
-    public String getConta() {
-        return conta;
+    public String getNumeroConta() {
+        return numeroConta;
     }
 
-    public void setConta(String conta) {
-        this.conta = conta;
+    public void setNumeroConta(String numeroConta) {
+        this.numeroConta = numeroConta;
     }
 
     public Agencia getAgencia() {
@@ -74,6 +75,25 @@ public class Conta {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public void Saque(double valor) {
+
+        if (getSaldo() != 0 && getSaldo() > valor) {
+            setSaldo(getSaldo() - valor);
+            System.out.println("Você sacou " + valor + " e seu saldo é " + getSaldo());
+        } else {
+            System.out.println("Não foi possível processar seu pedido!");
+            System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
+        }
+    }
+
+    public void Deposito(double valor) {
+
+        if (valor > 0) {
+            setSaldo(getSaldo() + valor);
+            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é" + getSaldo());
+        }
     }
 
 }
