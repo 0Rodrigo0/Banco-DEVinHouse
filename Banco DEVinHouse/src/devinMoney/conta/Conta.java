@@ -77,22 +77,32 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public void Saque(double valor) {
+    public void saque(double valor) {
 
         if (getSaldo() != 0 && getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
-            System.out.println("Você sacou " + valor + " e seu saldo é " + getSaldo());
+            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo());
         } else {
             System.out.println("Não foi possível processar seu pedido!");
             System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
         }
     }
 
-    public void Deposito(double valor) {
+    public void deposito(double valor) {
 
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
-            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é" + getSaldo());
+            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é " + " R$ " + getSaldo());
+        } else {
+            System.out.println("fodeu");
+        }
+    }
+
+    public void saldo(String conta) {
+        if (getNumeroConta().equals(conta)) {
+            System.out.println("Voce tem " + " R$ " + getSaldo());
+        } else {
+            System.out.println("Digite uma conta valida");
         }
     }
 
