@@ -40,9 +40,11 @@ public class DevinMoneyApp {
         // }
 
         do {
+            System.out.println(" ");
             System.out.println("Bem vindo");
             System.out.println("1 - Sacar  2 - Depositar");
             System.out.println("9 para sair");
+            System.out.println(" ");
             opcao = inicio.nextInt();
             if (opcao == 1) {
                 System.out.println("Digite sua conta");
@@ -53,8 +55,10 @@ public class DevinMoneyApp {
                         System.out.println("Digite o valor do Saque");
                         double valorSaque = inicio.nextDouble();
                         conta2.Saque(valorSaque);
+                        break;
                     } else {
-                        // System.out.println("Digite uma conta valida");
+                        System.out.println("Digite uma conta valida");
+                        break;
                     }
                 }
             }
@@ -67,8 +71,10 @@ public class DevinMoneyApp {
                         System.out.println("Digite o valor do Deposito");
                         double valorDep = inicio.nextDouble();
                         conta2.Deposito(valorDep);
+                        break;
                     } else {
                         System.out.println("Digite uma conta valida");
+                        break;
                     }
                 }
 

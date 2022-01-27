@@ -79,7 +79,7 @@ public class Conta {
 
     public void Saque(double valor) {
 
-        if (getSaldo() != 0 && getSaldo() > valor) {
+        if (getSaldo() != 0 && getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
             System.out.println("Você sacou " + valor + " e seu saldo é " + getSaldo());
         } else {
