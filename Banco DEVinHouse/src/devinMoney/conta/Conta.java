@@ -81,7 +81,8 @@ public class Conta {
 
         if (getSaldo() != 0 && getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
-            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo());
+            System.out.println("");
+            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
         } else {
             System.out.println("Não foi possível processar seu pedido!");
             System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
@@ -92,18 +93,26 @@ public class Conta {
 
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
-            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é " + " R$ " + getSaldo());
-        } else {
-            System.out.println("fodeu");
+            System.out.println("");
+            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é " + " R$ " + getSaldo() + ".");
         }
     }
 
     public void saldo(String conta) {
         if (getNumeroConta().equals(conta)) {
-            System.out.println("Voce tem " + " R$ " + getSaldo());
-        } else {
-            System.out.println("Digite uma conta valida");
+            System.out.println("");
+            System.out.println(getNome() + " voce tem " + " R$ " + getSaldo() + " até o momento.");
         }
+    }
+
+    public boolean validaConta(String conta) {
+
+        if (getNumeroConta().equals(conta)) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

@@ -49,28 +49,40 @@ public class DevinMoneyApp {
             if (opcao == 1) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
+                Conta c = null;
                 for (Conta conta2 : conta) {
-                    if (conta2.getNumeroConta().equals(num)) {
+                    if (conta2.validaConta(num) == true) {
+                        System.out.println("");
                         System.out.println("Ola " + conta2.getNome());
                         System.out.println("Digite o valor do Saque");
                         double valorSaque = inicio.nextDouble();
                         conta2.saque(valorSaque);
-                        break;
+                        c = conta2;
                     }
+                }
+                if (c == null) {
+                    System.out.println("");
+                    System.out.println("Conta não existe, digite uma conta válida!");
                 }
 
             }
             if (opcao == 2) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
+                Conta c = null;
                 for (Conta conta2 : conta) {
-                    if (conta2.getNumeroConta().equals(num)) {
+                    if (conta2.validaConta(num) == true) {
+                        System.out.println("");
                         System.out.println("Ola " + conta2.getNome());
                         System.out.println("Digite o valor do Deposito");
                         double valorDep = inicio.nextDouble();
                         conta2.deposito(valorDep);
-                        break;
+                        c = conta2;
                     }
+                }
+                if (c == null) {
+                    System.out.println("");
+                    System.out.println("Conta não existe, digite uma conta válida!");
                 }
 
             }
@@ -78,12 +90,18 @@ public class DevinMoneyApp {
             if (opcao == 3) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
+                Conta c = null;
                 for (Conta conta2 : conta) {
-                    if (conta2.getNumeroConta().equals(num)) {
+                    if (conta2.validaConta(num) == true) {
                         conta2.saldo(num);
+                        c = conta2;
                     }
                 }
-                System.out.println("Digite uma conta valida");
+                if (c == null) {
+                    System.out.println("");
+                    System.out.println("Conta não existe, digite uma conta válida!");
+                }
+
             }
 
         } while (opcao != 9);
