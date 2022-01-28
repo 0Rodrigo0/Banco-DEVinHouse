@@ -94,7 +94,7 @@ public class Conta {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
             System.out.println("");
-            System.out.println("Oba, voce depositou " + valor + " e seu saldo agora é " + " R$ " + getSaldo() + ".");
+            System.out.println("Desposito de  " + "R$" + valor + " efetivado. Saldo: " + " R$ " + getSaldo() + ".");
         }
     }
 
@@ -112,7 +112,14 @@ public class Conta {
         } else {
             return false;
         }
+    }
 
+    public void transferir(double valor) {
+        if (valor > 0) {
+            setSaldo(getSaldo() + valor);
+            System.out.println("");
+            System.out.println(getNome() + " recebeu a transferencia. Saldo " + " R$ " + getSaldo() + ".");
+        }
     }
 
 }

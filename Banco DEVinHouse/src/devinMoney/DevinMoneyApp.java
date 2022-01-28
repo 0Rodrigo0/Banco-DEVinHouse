@@ -42,14 +42,15 @@ public class DevinMoneyApp {
         do {
             System.out.println(" ");
             System.out.println("Bem vindo");
-            System.out.println("1 - Sacar  2 - Depositar   3 - Saldo");
+            System.out.println("1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência");
             System.out.println("9 para sair");
             System.out.println(" ");
             opcao = inicio.nextInt();
+            Conta c = null;
+            // saque
             if (opcao == 1) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                Conta c = null;
                 for (Conta conta2 : conta) {
                     if (conta2.validaConta(num) == true) {
                         System.out.println("");
@@ -64,12 +65,11 @@ public class DevinMoneyApp {
                     System.out.println("");
                     System.out.println("Conta não existe, digite uma conta válida!");
                 }
-
             }
+            // deposito
             if (opcao == 2) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                Conta c = null;
                 for (Conta conta2 : conta) {
                     if (conta2.validaConta(num) == true) {
                         System.out.println("");
@@ -84,16 +84,52 @@ public class DevinMoneyApp {
                     System.out.println("");
                     System.out.println("Conta não existe, digite uma conta válida!");
                 }
-
             }
-
+            // saldo
             if (opcao == 3) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                Conta c = null;
                 for (Conta conta2 : conta) {
                     if (conta2.validaConta(num) == true) {
                         conta2.saldo(num);
+                        c = conta2;
+                    }
+                }
+                if (c == null) {
+                    System.out.println("");
+                    System.out.println("Conta não existe, digite uma conta válida!");
+                }
+            }
+            // transferência
+            if (opcao == 4) {
+                System.out.println("Digite sua conta");
+                String num = inicio.next();
+                for (Conta conta2 : conta) {
+                    if (conta2.validaConta(num) == true) {
+                        System.out.println("");
+                        System.out.println("Ola " + conta2.getNome());
+                        System.out.println("Digite o valor do Saque");
+                        double valorSaque = inicio.nextDouble();
+                        if (conta2.getSaldo() >= valorSaque) {
+                            conta2.saque(valorSaque);
+                            System.out.println("Digite a conta destino");
+                            String num1 = inicio.next();
+                            for (Conta conta3 : conta) {
+                                if (conta3.validaConta(num1) == true) {
+                                    conta3.transferir(valorSaque);
+                                    c = conta3;
+                                }
+                            }
+                            if (c == null) {
+                                System.out.println("");
+                                System.out.println("Conta não existe, digite uma conta válida!");
+                                conta2.deposito(valorSaque);
+                            }
+                        } else {
+                            System.out.println("Não foi possível processar seu pedido!");
+                            System.out.println(
+                                    "Seu saldo é " + conta2.getSaldo() + " Você precisa fazer um depósito primeiro!");
+                        }
                         c = conta2;
                     }
                 }
