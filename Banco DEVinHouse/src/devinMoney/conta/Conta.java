@@ -1,6 +1,6 @@
 package devinMoney.conta;
 
-public class Conta {
+public abstract class Conta {
 
     private String tipo;
     private String nome;
@@ -79,15 +79,23 @@ public class Conta {
 
     public void saque(double valor) {
 
-        if (getSaldo() != 0 && getSaldo() >= valor) {
-            setSaldo(getSaldo() - valor);
-            System.out.println("");
-            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
-        } else {
-            System.out.println("Não foi possível processar seu pedido!");
-            System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
+        if (getTipo().equals("P")) {
+            if (getSaldo() != 0 && getSaldo() >= valor) {
+                setSaldo(getSaldo() - valor);
+                System.out.println("");
+                System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
+            } else {
+                System.out.println("Não foi possível processar seu pedido!");
+                System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito!");
+                System.out.println("Sua conta não possui cheque especial.");
+            }
+        }
+        if (getTipo().equals("C")) {
+            saquecorrente(valor);
         }
     }
+
+    public abstract void saquecorrente(double valor);
 
     public void deposito(double valor) {
 

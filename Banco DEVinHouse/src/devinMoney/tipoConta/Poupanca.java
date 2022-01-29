@@ -31,4 +31,9 @@ public class Poupanca extends Conta {
                 + "Conta: " + getNumeroConta() + "\n";
     }
 
+    @Override
+    public void saquecorrente(double valor) {
+
+    }
+
 }
