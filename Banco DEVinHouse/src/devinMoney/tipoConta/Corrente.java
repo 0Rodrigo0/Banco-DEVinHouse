@@ -42,15 +42,16 @@ public class Corrente extends Conta {
     // saque conta corrente
     @Override
     public void saqueCorrente(double valor) {
-        if ((getSaldo() - valor) >= -1000.0) {
+        if ((getSaldo() - valor) >= getLimiteEspecial()) {
             setSaldo(getSaldo() - valor);
             System.out.println("");
             System.out.println("O valor " + valor + " foi debitado. Saldo: " + " R$ " + getSaldo() + ".");
-            System.out.println("Sua conta tem " + "R$ " + getLimiteEspecial() + " de cheque especial.");
+            System.out.println("Sua conta tem " + "R$ " + Math.abs(getLimiteEspecial()) + " de cheque especial.");
         } else {
             System.out.println("Você atingiu o limite de sua conta!");
             System.out.println(
-                    "Seu saldo é " + getSaldo() + ". Limite " + "R$ " + getLimiteEspecial() + " de cheque especial.");
+                    "Seu saldo é " + getSaldo() + ". Limite " + "R$ " + Math.abs(getLimiteEspecial())
+                            + " de cheque especial.");
             System.out.println("Regularize sua conta para voltar a sacar.");
         }
     }
@@ -60,7 +61,7 @@ public class Corrente extends Conta {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
             System.out.println("Deposito feito " + "R$ " + getSaldo());
-            System.out.println("Limite cheque especial " + "R$" + getLimiteEspecial());
+            System.out.println("Limite cheque especial " + "R$" + Math.abs(getLimiteEspecial()));
 
         }
 

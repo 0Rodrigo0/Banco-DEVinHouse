@@ -20,10 +20,11 @@ public class DevinMoneyApp {
         Scanner inicio = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<Conta>();
 
-        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 1000, 0);
+        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
+                0);
         Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0);
         Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0);
-        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, 0, 0);
+        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, -2000, 0);
         Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.FLORIANOPOLIS_001, 0);
         Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 0);
 
