@@ -111,26 +111,60 @@ public class DevinMoneyApp {
                         System.out.println("Ola " + conta2.getNome());
                         System.out.println("Digite o valor do Saque");
                         double valorSaque = inicio.nextDouble();
-                        if (valorSaque > 0) {
-                            conta2.saque(valorSaque);
-                            System.out.println("Digite a conta destino");
-                            String num1 = inicio.next();
-                            for (Conta conta3 : conta) {
-                                if (conta3.validaConta(num1) == true) {
-                                    conta3.transferir(valorSaque);
-                                    c = conta3;
+                        if (conta2.getTipo() != "C") {
+                            if (conta2.getSaldo() >= valorSaque) {
+                                if (valorSaque > 0) {
+                                    conta2.saque(valorSaque);
+                                    System.out.println("Digite a conta destino");
+                                    String num1 = inicio.next();
+                                    for (Conta conta3 : conta) {
+                                        if (conta3.validaConta(num1) == true) {
+                                            conta3.transferir(valorSaque);
+                                            c = conta3;
+                                        }
+                                    }
+                                    if (c == null) {
+                                        System.out.println("");
+                                        System.out.println("Conta não existe, digite uma conta válida!");
+                                        System.out.println("Saque cancelado!");
+                                        conta2.deposito(valorSaque);
+                                    }
                                 }
-                            }
-                            if (c == null) {
-                                System.out.println("");
-                                System.out.println("Conta não existe, digite uma conta válida!");
-                                System.out.println("Saque cancelado!");
-                                conta2.deposito(valorSaque);
+                            } else {
+                                System.out.println("Não foi possível processar seu pedido!");
+                                System.out.println(
+                                        "Seu saldo é " + conta2.getSaldo()
+                                                + " Você precisa fazer um depósito primeiro!");
                             }
                         } else {
-                            System.out.println("Não foi possível processar seu pedido!");
-                            System.out.println(
-                                    "Seu saldo é " + conta2.getSaldo() + " Você precisa fazer um depósito primeiro!");
+                            if (conta2.saldoCorrente() >= valorSaque) {
+                                if (valorSaque > 0) {
+                                    conta2.saque(valorSaque);
+                                    System.out.println("Digite a conta destino");
+                                    String num1 = inicio.next();
+                                    for (Conta conta3 : conta) {
+                                        if (conta3.validaConta(num1) == true) {
+                                            conta3.transferir(valorSaque);
+                                            c = conta3;
+                                        }
+                                    }
+                                    if (c == null) {
+                                        System.out.println("");
+                                        System.out.println("Conta não existe, digite uma conta válida!");
+                                        System.out.println("Saque cancelado!");
+                                        conta2.deposito(valorSaque);
+                                    }
+                                }
+
+                            } else {
+                                System.out.println(conta2.saldoCorrente());
+                                System.out.println("Não foi possível processar seu pedido!");
+                                System.out.println(
+                                        "Seu saldo é " + conta2.getSaldo()
+                                                + " Você precisa fazer um depósito primeiro!");
+
+                            }
+
                         }
                         c = conta2;
                     }

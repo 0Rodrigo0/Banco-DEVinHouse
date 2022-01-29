@@ -56,8 +56,16 @@ public class Corrente extends Conta {
         }
     }
 
-    public void depositoCorrente(double valor) {
+    // saldo conta corrente
+    @Override
+    public double saldoCorrente() {
+        double valor = getSaldo() + Math.abs(getLimiteEspecial());
+        return valor;
 
+    }
+
+    // deposito conta corrente
+    public void depositoCorrente(double valor) {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
             System.out.println("Deposito feito " + "R$ " + getSaldo());
@@ -66,4 +74,5 @@ public class Corrente extends Conta {
         }
 
     }
+
 }

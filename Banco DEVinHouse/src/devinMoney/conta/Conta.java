@@ -81,6 +81,8 @@ public abstract class Conta {
 
     public abstract void depositoCorrente(double valor);
 
+    public abstract double saldoCorrente();
+
     // método saque
     public void saque(double valor) {
         // saque poupança
@@ -146,11 +148,14 @@ public abstract class Conta {
 
     // metodo trasnfere
     public void transferir(double valor) {
-        if (valor > 0) {
-            setSaldo(getSaldo() + valor);
-            System.out.println("");
-            System.out.println(getNome() + " recebeu a transferencia. Saldo " + " R$ " + getSaldo() + ".");
+        if (getTipo() != "C") {
+            if (valor > 0) {
+                setSaldo(getSaldo() + valor);
+                System.out.println("");
+                System.out.println(getNome() + " recebeu a transferencia. Saldo " + " R$ " + getSaldo() + ".");
+            }
         }
+
     }
 
 }
