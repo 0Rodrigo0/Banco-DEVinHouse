@@ -8,8 +8,8 @@ public class Corrente extends Conta {
     private double especial;
     private double limiteEspecial;
 
-    public Corrente(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia, double saldo,
-            double limiteEspecial) {
+    public Corrente(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia,
+            double limiteEspecial, double saldo) {
         super(tipo, nome, cpf, renda, conta, agencia, saldo);
         this.limiteEspecial = limiteEspecial;
     }
@@ -39,28 +39,30 @@ public class Corrente extends Conta {
                 + "Conta: " + getNumeroConta() + "\n";
     }
 
+    // saque conta corrente
+    @Override
     public void saqueCorrente(double valor) {
-        if (getSaldo() >= -1000 && getLimiteEspecial() >= valor) {
+        if ((getSaldo() - valor) >= -1000.0) {
             setSaldo(getSaldo() - valor);
             System.out.println("");
-            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
+            System.out.println("O valor " + valor + " foi debitado. Saldo: " + " R$ " + getSaldo() + ".");
+            System.out.println("Sua conta tem " + "R$ " + getLimiteEspecial() + " de cheque especial.");
         } else {
-            System.out.println("Não foi possível processar seu pedido!");
-            System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
+            System.out.println("Você atingiu o limite de sua conta!");
+            System.out.println(
+                    "Seu saldo é " + getSaldo() + ". Limite " + "R$ " + getLimiteEspecial() + " de cheque especial.");
+            System.out.println("Regularize sua conta para voltar a sacar.");
         }
-
     }
 
-    @Override
-    public void saquecorrente(double valor) {
-        if (getSaldo() >= 0 && getLimiteEspecial() <= 1000.0) {
-            setSaldo(getSaldo() - valor);
-            System.out.println("");
-            System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
-            System.out.println("Sua conta tem " + "R$" + getLimiteEspecial() + " de cheque especial.");
-        } else {
-            System.out.println("Não foi possível processar seu pedido!");
-            System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito primeiro!");
+    public void depositoCorrente(double valor) {
+
+        if (valor > 0) {
+            setSaldo(getSaldo() + valor);
+            System.out.println("Deposito feito " + "R$ " + getSaldo());
+            System.out.println("Limite cheque especial " + "R$" + getLimiteEspecial());
+
         }
+
     }
 }

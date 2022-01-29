@@ -77,9 +77,30 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public void saque(double valor) {
+    public abstract void saqueCorrente(double valor);
 
+    public abstract void depositoCorrente(double valor);
+
+    // método saque
+    public void saque(double valor) {
+        // saque poupança
         if (getTipo().equals("P")) {
+            if (getSaldo() >= valor) {
+                setSaldo(getSaldo() - valor);
+                System.out.println("");
+                System.out.println("Você sacou " + valor + " e seu saldo é " + " R$ " + getSaldo() + ".");
+            } else {
+                System.out.println("Não foi possível processar seu pedido!");
+                System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito!");
+                System.out.println("Sua conta não possui cheque especial.");
+            }
+        }
+        // saque corrente
+        if (getTipo().equals("C")) {
+            saqueCorrente(valor);
+        }
+        // saque investimento
+        if (getTipo().equals("I")) {
             if (getSaldo() != 0 && getSaldo() >= valor) {
                 setSaldo(getSaldo() - valor);
                 System.out.println("");
@@ -90,22 +111,22 @@ public abstract class Conta {
                 System.out.println("Sua conta não possui cheque especial.");
             }
         }
-        if (getTipo().equals("C")) {
-            saquecorrente(valor);
-        }
+
     }
 
-    public abstract void saquecorrente(double valor);
-
+    // método deposito
     public void deposito(double valor) {
-
-        if (valor > 0) {
-            setSaldo(getSaldo() + valor);
-            System.out.println("");
-            System.out.println("Desposito de  " + "R$" + valor + " efetivado. Saldo: " + " R$ " + getSaldo() + ".");
+        if (getTipo() != "C") {
+            if (valor > 0) {
+                setSaldo(getSaldo() + valor);
+                System.out.println("Desposito de  " + "R$" + valor + " efetivado. Saldo: " + " R$ " + getSaldo() + ".");
+            }
+        } else {
+            depositoCorrente(valor);
         }
     }
 
+    // metodo saldo
     public void saldo(String conta) {
         if (getNumeroConta().equals(conta)) {
             System.out.println("");
@@ -113,6 +134,7 @@ public abstract class Conta {
         }
     }
 
+    // metodo valida conta
     public boolean validaConta(String conta) {
 
         if (getNumeroConta().equals(conta)) {
@@ -122,6 +144,7 @@ public abstract class Conta {
         }
     }
 
+    // metodo trasnfere
     public void transferir(double valor) {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);

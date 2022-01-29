@@ -20,8 +20,7 @@ public class DevinMoneyApp {
         Scanner inicio = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<Conta>();
 
-        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 0,
-                1000.0);
+        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, 1000, 0);
         Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0);
         Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0);
         Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, 0, 0);
@@ -111,7 +110,7 @@ public class DevinMoneyApp {
                         System.out.println("Ola " + conta2.getNome());
                         System.out.println("Digite o valor do Saque");
                         double valorSaque = inicio.nextDouble();
-                        if (conta2.getSaldo() >= valorSaque) {
+                        if (valorSaque > 0) {
                             conta2.saque(valorSaque);
                             System.out.println("Digite a conta destino");
                             String num1 = inicio.next();
@@ -124,6 +123,7 @@ public class DevinMoneyApp {
                             if (c == null) {
                                 System.out.println("");
                                 System.out.println("Conta não existe, digite uma conta válida!");
+                                System.out.println("Saque cancelado!");
                                 conta2.deposito(valorSaque);
                             }
                         } else {

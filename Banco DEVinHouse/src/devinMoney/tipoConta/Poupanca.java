@@ -32,7 +32,12 @@ public class Poupanca extends Conta {
     }
 
     @Override
-    public void saquecorrente(double valor) {
+    public void saqueCorrente(double valor) {
+
+    }
+
+    @Override
+    public void depositoCorrente(double valor) {
 
     }
 
