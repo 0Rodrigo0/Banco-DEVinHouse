@@ -68,7 +68,7 @@ public class Corrente extends Conta {
     public void depositoCorrente(double valor) {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
-            System.out.println("Valor devolvido " + "R$ " + valor);
+            System.out.println("Valor depositado/devolvido " + "R$ " + valor);
             System.out.println("Limite cheque especial " + "R$" + Math.abs(getLimiteEspecial()));
 
         }

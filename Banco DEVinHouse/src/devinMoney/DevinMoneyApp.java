@@ -139,14 +139,18 @@ public class DevinMoneyApp {
                                         System.out.println("Digite a conta destino");
                                         String num1 = inicio.next();
                                         for (Conta conta3 : conta) {
-                                            if (conta3.validaConta(num1) == true) {
-                                                conta3.transferir(valorSaque);
-                                                c = conta3;
+                                            if (conta2.getNumeroConta().equals(conta3.getNumeroConta())) {
+                                                break;
+                                            } else {
+                                                if (conta3.validaConta(num1) == true) {
+                                                    conta3.transferir(valorSaque);
+                                                    c = conta3;
+                                                }
                                             }
                                         }
                                         if (c == null) {
                                             System.out.println("");
-                                            System.out.println("Conta não existe, digite uma conta válida!");
+                                            System.out.println("Conta incorreta, digite uma conta válida!");
                                             System.out.println("Saque cancelado!");
                                             conta2.deposito(valorSaque);
                                         }
@@ -162,16 +166,22 @@ public class DevinMoneyApp {
                                     if (valorSaque > 0) {
                                         conta2.saque(valorSaque);
                                         System.out.println("Digite a conta destino");
+                                        inicio.nextLine();
                                         String num1 = inicio.next();
                                         for (Conta conta3 : conta) {
-                                            if (conta3.validaConta(num1) == true) {
-                                                conta3.transferir(valorSaque);
-                                                c = conta3;
+                                            if (conta2.getNumeroConta().equals(conta3.getNumeroConta())) {
+                                                break;
+                                            } else {
+                                                if (conta3.validaConta(num1) == true) {
+                                                    conta3.transferir(valorSaque);
+                                                    c = conta3;
+                                                }
                                             }
+
                                         }
                                         if (c == null) {
                                             System.out.println("");
-                                            System.out.println("Conta não existe, digite uma conta válida!");
+                                            System.out.println("Conta incorreta, digite uma conta válida!");
                                             System.out.println("Saque cancelado!");
                                             conta2.deposito(valorSaque);
                                         }
