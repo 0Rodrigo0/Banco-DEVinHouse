@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import devinMoney.conta.Agencia;
 import devinMoney.conta.Conta;
+import devinMoney.operacoes.TipoOp;
+import devinMoney.operacoes.TodasOperacoes;
 import devinMoney.tipoConta.Corrente;
 import devinMoney.tipoConta.Investimento;
 import devinMoney.tipoConta.Poupanca;
@@ -20,6 +22,7 @@ public class DevinMoneyApp {
         Integer opcao = 0;
         Scanner inicio = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<Conta>();
+        ArrayList<TodasOperacoes> todasOperacoes = new ArrayList<TodasOperacoes>();
 
         Corrente c1 = new Corrente("C", "Presuntinho", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
                 0);
@@ -60,6 +63,10 @@ public class DevinMoneyApp {
                             System.out.println("Digite o valor do Saque");
                             double valorSaque = inicio.nextDouble();
                             conta2.saque(valorSaque);
+                            TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
+                                    conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
+                                    TipoOp.SAQUE, valorSaque);
+                            todasOperacoes.add(o);
                             c = conta2;
                         }
                     }
@@ -86,6 +93,10 @@ public class DevinMoneyApp {
                             double valorDep = inicio.nextDouble();
                             conta2.deposito(valorDep);
                             c = conta2;
+                            TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
+                                    conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
+                                    TipoOp.DEPOSITO, valorDep);
+                            todasOperacoes.add(o);
                         }
                     }
                     if (c == null) {
@@ -105,6 +116,11 @@ public class DevinMoneyApp {
                     for (Conta conta2 : conta) {
                         if (conta2.validaConta(num) == true) {
                             conta2.saldo(num);
+                            c = conta2;
+                            TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
+                                    conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
+                                    TipoOp.SALDO, 0);
+                            todasOperacoes.add(o);
                             c = conta2;
                         }
                     }
@@ -136,11 +152,19 @@ public class DevinMoneyApp {
                                         String num1 = inicio.next();
                                         for (Conta conta3 : conta) {
                                             if (conta2.getNumeroConta().equals(conta3.getNumeroConta())) {
-                                                break;
+
                                             } else {
                                                 if (conta3.validaConta(num1) == true) {
                                                     conta3.transferir(valorSaque);
-                                                    c = conta3;
+                                                    TodasOperacoes o = new TodasOperacoes(conta2.getTipo(),
+                                                            conta2.getNome(),
+                                                            conta2.getCpf(),
+                                                            conta2.getRenda(), conta2.getNumeroConta(),
+                                                            conta2.getAgencia(),
+                                                            conta2.getSaldo(),
+                                                            TipoOp.TRASNFERENCIA, valorSaque);
+                                                    todasOperacoes.add(o);
+                                                    c = conta2;
                                                 }
                                             }
                                         }
@@ -166,17 +190,26 @@ public class DevinMoneyApp {
                                         String num1 = inicio.next();
                                         for (Conta conta3 : conta) {
                                             if (conta2.getNumeroConta().equals(conta3.getNumeroConta())) {
-                                                break;
+
                                             } else {
                                                 if (conta3.validaConta(num1) == true) {
                                                     conta3.transferir(valorSaque);
-                                                    c = conta3;
+                                                    TodasOperacoes o = new TodasOperacoes(conta2.getTipo(),
+                                                            conta2.getNome(),
+                                                            conta2.getCpf(),
+                                                            conta2.getRenda(),
+                                                            conta2.getNumeroConta(), conta2.getAgencia(),
+                                                            conta2.getSaldo(),
+                                                            TipoOp.TRASNFERENCIA, valorSaque);
+                                                    todasOperacoes.add(o);
+                                                    c = conta2;
                                                 }
+
                                             }
                                         }
                                         if (c == null) {
                                             System.out.println("");
-                                            System.out.println("Conta incorreta, digite uma conta válida!");
+                                            System.out.println("Conta incorreta, digite uma conta válidaAA!");
                                             System.out.println("Saque cancelado!");
                                             conta2.deposito(valorSaque);
                                         }
@@ -222,6 +255,13 @@ public class DevinMoneyApp {
                                 conta1.setNome(novo);
                                 System.out.println("Seu nome foi alterado para " + conta1.getNome());
                                 System.out.println("");
+                                TodasOperacoes o = new TodasOperacoes(conta1.getTipo(), conta1.getNome(),
+                                        conta1.getCpf(),
+                                        conta1.getRenda(), conta1.getNumeroConta(), conta1.getAgencia(),
+                                        conta1.getSaldo(),
+                                        TipoOp.ALTERA_DADOS, 0);
+                                todasOperacoes.add(o);
+
                             }
                             c = conta1;
                         }
@@ -292,6 +332,12 @@ public class DevinMoneyApp {
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
                                         totalInvestido = totalInvestido + valorI;
+                                        TodasOperacoes o = new TodasOperacoes(c.getTipo(), c.getNome(),
+                                                c.getCpf(),
+                                                c.getRenda(), c.getNumeroConta(), c.getAgencia(),
+                                                c.getSaldo(),
+                                                TipoOp.INVESTIMENTO, valorI);
+                                        todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -303,7 +349,6 @@ public class DevinMoneyApp {
                                         System.out.println("Valor: " + valorI + " Tempo: " + tempo + " Taxa: 10% a.a");
                                         System.out.println("Rendimento: " + "R$ " + rendimento);
                                     }
-
                                     break;
 
                                 case "2": // CDB
@@ -322,6 +367,12 @@ public class DevinMoneyApp {
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
                                         totalInvestido = totalInvestido + valorI;
+                                        TodasOperacoes o = new TodasOperacoes(c.getTipo(), c.getNome(),
+                                                c.getCpf(),
+                                                c.getRenda(), c.getNumeroConta(), c.getAgencia(),
+                                                c.getSaldo(),
+                                                TipoOp.INVESTIMENTO, valorI);
+                                        todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -352,6 +403,12 @@ public class DevinMoneyApp {
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
                                         totalInvestido = totalInvestido + valorI;
+                                        TodasOperacoes o = new TodasOperacoes(c.getTipo(), c.getNome(),
+                                                c.getCpf(),
+                                                c.getRenda(), c.getNumeroConta(), c.getAgencia(),
+                                                c.getSaldo(),
+                                                TipoOp.INVESTIMENTO, valorI);
+                                        todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -418,7 +475,20 @@ public class DevinMoneyApp {
                     }
 
                     // Transações por Cliente
-                    if (entrada.equals("3")) {
+                    if (entrada.equals("4")) {
+                        System.out.println("Digite a conta que deseja ver as operações");
+                        String num = inicio.next();
+                        if (num.matches("^[0-9]+")) {
+                            for (TodasOperacoes todasOperacoes2 : todasOperacoes) {
+                                if (todasOperacoes2.getNumeroConta().equals(num)) {
+                                    System.out.println("");
+                                    System.out.println(todasOperacoes2);
+                                }
+                            }
+                        } else {
+                            System.out.println("");
+                            System.out.println("Digite somente numeros!");
+                        }
 
                     }
 
