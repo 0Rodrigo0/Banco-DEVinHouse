@@ -7,6 +7,7 @@ import devinMoney.tipoInvestimento.TipoInvestimento;
 public class Investimento extends Conta {
 
     private TipoInvestimento tipoInvestimento;
+    private double valorInvestido;
 
     public Investimento(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia,
             double saldo) {
@@ -20,6 +21,14 @@ public class Investimento extends Conta {
 
     public void setTipoInvestimento(TipoInvestimento tipoInvestimento) {
         this.tipoInvestimento = tipoInvestimento;
+    }
+
+    public double getValorInvestido() {
+        return valorInvestido;
+    }
+
+    public void setValorInvestido(double valorInvestido) {
+        this.valorInvestido = valorInvestido;
     }
 
     @Override
@@ -42,6 +51,24 @@ public class Investimento extends Conta {
     @Override
     public double saldoCorrente() {
         return 0;
+    }
+
+    @Override
+    public boolean investe(double valor) {
+
+        if (getSaldo() != 0 && getSaldo() >= valor) {
+            setSaldo(getSaldo() - valor);
+            setValorInvestido(getValorInvestido() + valor);
+            System.out.println("");
+            System.out.println(
+                    "Você investiu " + getValorInvestido() + " e seu saldo é " + " R$ " + getSaldo() + ".");
+            return true;
+        } else {
+            System.out.println("Não foi possível processar seu pedido!");
+            System.out.println("Seu saldo é " + getSaldo() + " Você precisa fazer um depósito!");
+            System.out.println("Sua conta não possui cheque especial.");
+            return false;
+        }
     }
 
 }

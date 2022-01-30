@@ -75,4 +75,9 @@ public class Corrente extends Conta {
 
     }
 
+    @Override
+    public boolean investe(double valor) {
+        return false;
+    }
+
 }

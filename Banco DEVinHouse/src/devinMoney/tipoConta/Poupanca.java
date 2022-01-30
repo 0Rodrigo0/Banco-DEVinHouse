@@ -44,4 +44,9 @@ public class Poupanca extends Conta {
         return 0;
     }
 
+    @Override
+    public boolean investe(double valor) {
+        return false;
+    }
+
 }

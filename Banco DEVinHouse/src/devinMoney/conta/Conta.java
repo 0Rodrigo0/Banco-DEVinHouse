@@ -83,6 +83,8 @@ public abstract class Conta {
 
     public abstract double saldoCorrente();
 
+    public abstract boolean investe(double valor);
+
     // método saque
     public void saque(double valor) {
         // saque poupança

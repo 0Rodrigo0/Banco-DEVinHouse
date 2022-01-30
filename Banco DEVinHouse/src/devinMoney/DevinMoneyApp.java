@@ -45,7 +45,7 @@ public class DevinMoneyApp {
             System.out.println("*************************************************************************");
             System.out.println("***                         Bem vindo                                 ***");
             System.out.println("***     1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência       ***");
-            System.out.println("***     5 - Alterar dados   9 - para sair                             ***");
+            System.out.println("***     5 - Alterar dados   6 - Investimentos  9 - para sair          ***");
             System.out.println("***                                                                   ***");
             System.out.println("*************************************************************************");
             System.out.println("");
@@ -201,7 +201,7 @@ public class DevinMoneyApp {
             if (opcao == 5) {
                 System.out.println("");
                 System.out.println("Alterar dados cadastrais");
-                System.out.println("Digite a sua conta");
+                System.out.println("Digite sua conta");
                 String num = inicio.next();
                 if (num.matches("^[0-9]+")) {
                     for (Conta conta1 : conta) {
@@ -229,6 +229,149 @@ public class DevinMoneyApp {
                     System.out.println("");
                     System.out.println("Digite somente numeros!");
                 }
+            }
+            // Investimentos
+            if (opcao == 6) {
+                System.out.println("*************************************************************************");
+                System.out.println("******************************      *    ********************************");
+                System.out.println("*****************************      **      ******************************");
+                System.out.println("****************************     *  *       *****************************");
+                System.out.println("***************************         *        ****************************");
+                System.out.println("****************************        *       *****************************");
+                System.out.println("*****************************       *      ******************************");
+                System.out.println("*******************************   * * *   *******************************");
+                System.out.println("*************************************************************************");
+                System.out.println("             Bem vindo a área de investimentos do DevinMoney             ");
+                System.out.println("       Sua conta deve ser de Investimento para acessar nossos produtos   ");
+                System.out.println("");
+                System.out.println("Digite sua conta");
+                String num = inicio.next();
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta1 : conta) {
+                        if (conta1.validaConta(num) == true) {
+                            System.out.println("");
+                            System.out.println("Ola " + conta1.getNome() + ".");
+                            c = conta1;
+                        }
+                    }
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    } else {
+                        if (c.getTipo().equals("I")) {
+                            System.out.println("Bem vindo a área de Investimentos");
+                            System.out.println("");
+                            System.out.println("Vou te apresentar as opções:");
+                            System.out.println("1 - Cripto Moedas");
+                            System.out.println("2 - CDB - Certificado de Depósito Bancário");
+                            System.out.println("3 - Fundo de Investimento DevinMoney");
+                            System.out.println("");
+                            System.out.println("Escolha uma das opções...");
+                            switch (inicio.next()) {
+
+                                case "1": // Cripto
+                                    System.out.println("                      Cripto Moedas");
+                                    System.out.println("");
+                                    System.out
+                                            .println("Um tipo de dinheiro como outras moedas com as quais convivemos");
+                                    System.out.println("cotidianamente com a diferença de ser totalmente digital.");
+                                    System.out.println("Este investimento rene 10% ao ano.");
+                                    System.out.println("Faça uma simulação em Simular, ou Investir para investir.");
+                                    System.out.println("");
+                                    System.out.println("              1 - Investir      2 - Simular");
+                                    inicio.nextLine();
+                                    num = inicio.next();
+                                    if (num.equals("1")) {
+                                        System.out.println("Seu saldo é " + "R$ " + c.getSaldo());
+                                        System.out.println("Qual valor do Investimento?");
+                                        double valorI = inicio.nextDouble();
+                                        c.investe(valorI);
+                                    }
+                                    if (num.equals("2")) {
+                                        System.out.println("Digite o valor que deseja simular");
+                                        double valorI = inicio.nextDouble();
+                                        System.out.println("Digite o tempo desejado em meses");
+                                        System.out.println("Ex: 1 ou 2 ou 12 ...");
+                                        double tempo = inicio.nextDouble();
+                                        double rendimento = valorI * (0.009 * tempo);
+                                        System.out.println("Valor: " + valorI + " Tempo: " + tempo + " Taxa: 10% a.a");
+                                        System.out.println("Rendimento: " + "R$ " + rendimento);
+                                    }
+
+                                    break;
+
+                                case "2": // CDB
+                                    System.out.println("            CDB - Certificado de Depósito Bancário");
+                                    System.out.println("Um dos investimentos mais simples e populares do mercado");
+                                    System.out.println("e possui uma rentabilidade maior comparada a da poupança.");
+                                    System.out.println("Este investimento rene 15% ao ano.");
+                                    System.out.println("Faça uma simulação em Simular, ou Investir para investir.");
+                                    System.out.println("");
+                                    System.out.println("              1 - Investir      2 - Simular");
+                                    inicio.nextLine();
+                                    num = inicio.next();
+                                    if (num.equals("1")) {
+                                        System.out.println("Seu saldo é " + "R$ " + c.getSaldo());
+                                        System.out.println("Qual valor do Investimento?");
+                                        double valorI = inicio.nextDouble();
+                                        c.investe(valorI);
+                                    }
+                                    if (num.equals("2")) {
+                                        System.out.println("Digite o valor que deseja simular");
+                                        double valorI = inicio.nextDouble();
+                                        System.out.println("Digite o tempo desejado em meses");
+                                        System.out.println("Ex: 1 ou 2 ou 12 ...");
+                                        double tempo = inicio.nextDouble();
+                                        double rendimento = valorI * (0.013 * tempo);
+                                        System.out.println("Valor: " + valorI + " Tempo: " + tempo + " Taxa: 15% a.a");
+                                        System.out.println("Rendimento: " + "R$ " + rendimento);
+                                    }
+                                    break;
+
+                                case "3": // FI
+                                    System.out.println("                       Fundo de Investimento DevinMoney");
+                                    System.out.println(
+                                            "Procura novas opções para diversificar a sua carteira e aumentar o seu patrimônio?");
+                                    System.out.println("Então você precisa dos Fundos de Investimentos");
+                                    System.out.println("Este investimento rene 18% ao ano.");
+                                    System.out.println("Faça uma simulação em Simular, ou Investir para investir.");
+                                    System.out.println("");
+                                    System.out.println("              1 - Investir      2 - Simular");
+                                    inicio.nextLine();
+                                    num = inicio.next();
+                                    if (num.equals("1")) {
+                                        System.out.println("Seu saldo é " + "R$ " + c.getSaldo());
+                                        System.out.println("Qual valor do Investimento?");
+                                        double valorI = inicio.nextDouble();
+                                        c.investe(valorI);
+                                    }
+                                    if (num.equals("2")) {
+                                        System.out.println("Digite o valor que deseja simular");
+                                        double valorI = inicio.nextDouble();
+                                        System.out.println("Digite o tempo desejado em meses");
+                                        System.out.println("Ex: 1 ou 2 ou 12 ...");
+                                        double tempo = inicio.nextDouble();
+                                        double rendimento = valorI * (0.015 * tempo);
+                                        System.out.println("Valor: " + valorI + " Tempo: " + tempo + " Taxa: 18% a.a");
+                                        System.out.println("Rendimento: " + "R$ " + rendimento);
+                                    }
+                                    break;
+                            }
+
+                        } else {
+                            System.out.println("");
+                            System.out.println("Seu tipo de conta não dispõe dos produtos.");
+                            System.out.println("Contate o Gerente de sua conta.");
+                            System.out.println("");
+                        }
+
+                    }
+
+                } else {
+                    System.out.println("");
+                    System.out.println("Digite somente numeros!");
+                }
+
             }
         } while (opcao != 9);
         inicio.close();
