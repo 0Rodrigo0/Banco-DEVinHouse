@@ -121,7 +121,7 @@ public abstract class Conta {
         if (getTipo() != "C") {
             if (valor > 0) {
                 setSaldo(getSaldo() + valor);
-                System.out.println("Desposito de  " + "R$" + valor + " efetivado. Saldo: " + " R$ " + getSaldo() + ".");
+                System.out.println("Depositado/estornado: " + "R$" + valor + " Saldo: " + " R$ " + getSaldo() + ".");
             }
         } else {
             depositoCorrente(valor);

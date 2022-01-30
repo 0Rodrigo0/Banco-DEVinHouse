@@ -55,128 +55,146 @@ public class DevinMoneyApp {
             if (opcao == 1) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                for (Conta conta2 : conta) {
-                    if (conta2.validaConta(num) == true) {
-                        System.out.println("");
-                        System.out.println("Ola " + conta2.getNome());
-                        System.out.println("Digite o valor do Saque");
-                        double valorSaque = inicio.nextDouble();
-                        conta2.saque(valorSaque);
-                        c = conta2;
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta2 : conta) {
+                        if (conta2.validaConta(num) == true) {
+                            System.out.println("");
+                            System.out.println("Ola " + conta2.getNome());
+                            inicio.nextLine();
+                            System.out.println("Digite o valor do Saque");
+                            double valorSaque = inicio.nextDouble();
+                            conta2.saque(valorSaque);
+                            c = conta2;
+                        }
                     }
-                }
-                if (c == null) {
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    }
+                } else {
                     System.out.println("");
-                    System.out.println("Conta não existe, digite uma conta válida!");
+                    System.out.println("Digite somente numeros!");
                 }
             }
             // deposito
             if (opcao == 2) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                for (Conta conta2 : conta) {
-                    if (conta2.validaConta(num) == true) {
-                        System.out.println("");
-                        System.out.println("Ola " + conta2.getNome());
-                        System.out.println("Digite o valor do Deposito");
-                        double valorDep = inicio.nextDouble();
-                        conta2.deposito(valorDep);
-                        c = conta2;
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta2 : conta) {
+                        if (conta2.validaConta(num) == true) {
+                            System.out.println("");
+                            System.out.println("Ola " + conta2.getNome());
+                            inicio.nextLine();
+                            System.out.println("Digite o valor do Deposito");
+                            double valorDep = inicio.nextDouble();
+                            conta2.deposito(valorDep);
+                            c = conta2;
+                        }
                     }
-                }
-                if (c == null) {
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    }
+                } else {
                     System.out.println("");
-                    System.out.println("Conta não existe, digite uma conta válida!");
+                    System.out.println("Digite somente numeros!");
                 }
             }
             // saldo
             if (opcao == 3) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                for (Conta conta2 : conta) {
-                    if (conta2.validaConta(num) == true) {
-                        conta2.saldo(num);
-                        c = conta2;
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta2 : conta) {
+                        if (conta2.validaConta(num) == true) {
+                            conta2.saldo(num);
+                            c = conta2;
+                        }
                     }
-                }
-                if (c == null) {
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    }
+                } else {
                     System.out.println("");
-                    System.out.println("Conta não existe, digite uma conta válida!");
+                    System.out.println("Digite somente numeros!");
                 }
             }
             // transferência
             if (opcao == 4) {
                 System.out.println("Digite sua conta");
                 String num = inicio.next();
-                for (Conta conta2 : conta) {
-                    if (conta2.validaConta(num) == true) {
-                        System.out.println("");
-                        System.out.println("Ola " + conta2.getNome());
-                        System.out.println("Digite o valor do Saque");
-                        double valorSaque = inicio.nextDouble();
-                        if (conta2.getTipo() != "C") {
-                            if (conta2.getSaldo() >= valorSaque) {
-                                if (valorSaque > 0) {
-                                    conta2.saque(valorSaque);
-                                    System.out.println("Digite a conta destino");
-                                    String num1 = inicio.next();
-                                    for (Conta conta3 : conta) {
-                                        if (conta3.validaConta(num1) == true) {
-                                            conta3.transferir(valorSaque);
-                                            c = conta3;
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta2 : conta) {
+                        if (conta2.validaConta(num) == true) {
+                            System.out.println("");
+                            System.out.println("Ola " + conta2.getNome());
+                            System.out.println("Digite o valor do Saque");
+                            double valorSaque = inicio.nextDouble();
+                            if (conta2.getTipo() != "C") {
+                                if (conta2.getSaldo() >= valorSaque) {
+                                    if (valorSaque > 0) {
+                                        conta2.saque(valorSaque);
+                                        System.out.println("Digite a conta destino");
+                                        String num1 = inicio.next();
+                                        for (Conta conta3 : conta) {
+                                            if (conta3.validaConta(num1) == true) {
+                                                conta3.transferir(valorSaque);
+                                                c = conta3;
+                                            }
+                                        }
+                                        if (c == null) {
+                                            System.out.println("");
+                                            System.out.println("Conta não existe, digite uma conta válida!");
+                                            System.out.println("Saque cancelado!");
+                                            conta2.deposito(valorSaque);
                                         }
                                     }
-                                    if (c == null) {
-                                        System.out.println("");
-                                        System.out.println("Conta não existe, digite uma conta válida!");
-                                        System.out.println("Saque cancelado!");
-                                        conta2.deposito(valorSaque);
-                                    }
+                                } else {
+                                    System.out.println("Não foi possível processar seu pedido!");
+                                    System.out.println(
+                                            "Seu saldo é " + conta2.getSaldo()
+                                                    + " Você precisa fazer um depósito primeiro!");
                                 }
                             } else {
-                                System.out.println("Não foi possível processar seu pedido!");
-                                System.out.println(
-                                        "Seu saldo é " + conta2.getSaldo()
-                                                + " Você precisa fazer um depósito primeiro!");
-                            }
-                        } else {
-                            if (conta2.saldoCorrente() >= valorSaque) {
-                                if (valorSaque > 0) {
-                                    conta2.saque(valorSaque);
-                                    System.out.println("Digite a conta destino");
-                                    String num1 = inicio.next();
-                                    for (Conta conta3 : conta) {
-                                        if (conta3.validaConta(num1) == true) {
-                                            conta3.transferir(valorSaque);
-                                            c = conta3;
+                                if (conta2.saldoCorrente() >= valorSaque) {
+                                    if (valorSaque > 0) {
+                                        conta2.saque(valorSaque);
+                                        System.out.println("Digite a conta destino");
+                                        String num1 = inicio.next();
+                                        for (Conta conta3 : conta) {
+                                            if (conta3.validaConta(num1) == true) {
+                                                conta3.transferir(valorSaque);
+                                                c = conta3;
+                                            }
+                                        }
+                                        if (c == null) {
+                                            System.out.println("");
+                                            System.out.println("Conta não existe, digite uma conta válida!");
+                                            System.out.println("Saque cancelado!");
+                                            conta2.deposito(valorSaque);
                                         }
                                     }
-                                    if (c == null) {
-                                        System.out.println("");
-                                        System.out.println("Conta não existe, digite uma conta válida!");
-                                        System.out.println("Saque cancelado!");
-                                        conta2.deposito(valorSaque);
-                                    }
+                                } else {
+                                    System.out.println(conta2.saldoCorrente());
+                                    System.out.println("Não foi possível processar seu pedido!");
+                                    System.out.println(
+                                            "Seu saldo é " + conta2.getSaldo()
+                                                    + " Você precisa fazer um depósito primeiro!");
                                 }
-
-                            } else {
-                                System.out.println(conta2.saldoCorrente());
-                                System.out.println("Não foi possível processar seu pedido!");
-                                System.out.println(
-                                        "Seu saldo é " + conta2.getSaldo()
-                                                + " Você precisa fazer um depósito primeiro!");
-
                             }
-
+                            c = conta2;
                         }
-                        c = conta2;
                     }
-                }
-                if (c == null) {
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    }
+                } else {
                     System.out.println("");
-                    System.out.println("Conta não existe, digite uma conta válida!");
+                    System.out.println("Digite somente numeros!");
                 }
-
             }
             // altera dados, somente o nome pode ser alterado, os outros campos não pois são
             // dados da conta
@@ -185,29 +203,34 @@ public class DevinMoneyApp {
                 System.out.println("Alterar dados cadastrais");
                 System.out.println("Digite a sua conta");
                 String num = inicio.next();
-                for (Conta conta1 : conta) {
-                    if (conta1.validaConta(num) == true) {
-                        System.out.println("Nome da conta atual: " + conta1.getNome());
-                        System.out.println("Deseja alterar?");
-                        System.out.println("1 - sim    2 - não");
-                        String escolha = inicio.next();
-                        if (escolha.equals("1")) {
-                            System.out.println("Digite seu nome");
-                            String novo = inicio.next();
-                            conta1.setNome(novo);
-                            System.out.println("Seu nome foi alterado para " + conta1.getNome());
-                            System.out.println("");
+                if (num.matches("^[0-9]+")) {
+                    for (Conta conta1 : conta) {
+                        if (conta1.validaConta(num) == true) {
+                            System.out.println("Nome da conta atual: " + conta1.getNome());
+                            System.out.println("Deseja alterar?");
+                            System.out.println("1 - sim    2 - não");
+                            String escolha = inicio.next();
+                            if (escolha.equals("1")) {
+                                System.out.println("Digite seu nome");
+                                inicio.nextLine();
+                                String novo = inicio.nextLine();
+                                conta1.setNome(novo);
+                                System.out.println("Seu nome foi alterado para " + conta1.getNome());
+                                System.out.println("");
+                            }
+                            c = conta1;
                         }
-
                     }
-
+                    if (c == null) {
+                        System.out.println("");
+                        System.out.println("Conta não existe, digite uma conta válida!");
+                    }
+                } else {
+                    System.out.println("");
+                    System.out.println("Digite somente numeros!");
                 }
-
             }
-
         } while (opcao != 9);
-
         inicio.close();
     }
-
 }
