@@ -28,7 +28,9 @@ public class Poupanca extends Conta {
                 + "CPF: " + getCpf() + "\n"
                 + "Renda: " + getRenda() + "\n"
                 + "Agencia: " + getAgencia() + "\n"
-                + "Conta: " + getNumeroConta() + "\n";
+                + "Conta: " + getNumeroConta() + "\n"
+                + "Tipo Conta: " + getTipo() + "\n"
+                + "Saldo: " + getSaldo() + "\n" + "\n";
     }
 
     @Override

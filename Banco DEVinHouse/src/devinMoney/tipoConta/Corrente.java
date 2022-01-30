@@ -36,7 +36,10 @@ public class Corrente extends Conta {
                 + "CPF: " + getCpf() + "\n"
                 + "Renda: " + getRenda() + "\n"
                 + "Agencia: " + getAgencia() + "\n"
-                + "Conta: " + getNumeroConta() + "\n";
+                + "Conta: " + getNumeroConta() + "\n"
+                + "Tipo da Conta: " + getTipo() + "\n"
+                + "Saldo: " + getSaldo() + "\n"
+                + "Limite especial: " + Math.abs(getLimiteEspecial()) + "\n" + "\n";
     }
 
     // saque conta corrente
@@ -61,7 +64,6 @@ public class Corrente extends Conta {
     public double saldoCorrente() {
         double valor = getSaldo() + Math.abs(getLimiteEspecial());
         return valor;
-
     }
 
     // deposito conta corrente

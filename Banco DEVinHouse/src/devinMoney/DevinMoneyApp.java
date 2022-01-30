@@ -16,6 +16,7 @@ public class DevinMoneyApp {
     }
 
     public static void DevinMoneyAp() {
+        double totalInvestido = 0;
         Integer opcao = 0;
         Scanner inicio = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<Conta>();
@@ -23,10 +24,10 @@ public class DevinMoneyApp {
         Corrente c1 = new Corrente("C", "Presuntinho", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
                 0);
         Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0);
-        Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0);
+        Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0, 0);
         Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, -2000, 0);
         Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.FLORIANOPOLIS_001, 0);
-        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 0);
+        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 0, 0);
 
         conta.add(c1);
         conta.add(p1);
@@ -35,18 +36,13 @@ public class DevinMoneyApp {
         conta.add(p2);
         conta.add(i2);
 
-        // for (Conta conta2 : conta) {
-        // if (conta2.getTipo().equals("I"))
-        // System.out.println(conta2);
-        // }
-
         do {
             System.out.println("");
             System.out.println("*************************************************************************");
             System.out.println("***                         Bem vindo                                 ***");
             System.out.println("***     1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência       ***");
-            System.out.println("***     5 - Alterar dados   6 - Investimentos  9 - para sair          ***");
-            System.out.println("***                                                                   ***");
+            System.out.println("***     5 - Alterar dados   6 - Investimentos  7 - Relatórios         ***");
+            System.out.println("***     9 - para sair                                                 ***");
             System.out.println("*************************************************************************");
             System.out.println("");
             opcao = inicio.nextInt();
@@ -177,7 +173,6 @@ public class DevinMoneyApp {
                                                     c = conta3;
                                                 }
                                             }
-
                                         }
                                         if (c == null) {
                                             System.out.println("");
@@ -296,6 +291,7 @@ public class DevinMoneyApp {
                                         System.out.println("Qual valor do Investimento?");
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
+                                        totalInvestido = totalInvestido + valorI;
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -325,6 +321,7 @@ public class DevinMoneyApp {
                                         System.out.println("Qual valor do Investimento?");
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
+                                        totalInvestido = totalInvestido + valorI;
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -354,6 +351,7 @@ public class DevinMoneyApp {
                                         System.out.println("Qual valor do Investimento?");
                                         double valorI = inicio.nextDouble();
                                         c.investe(valorI);
+                                        totalInvestido = totalInvestido + valorI;
                                     }
                                     if (num.equals("2")) {
                                         System.out.println("Digite o valor que deseja simular");
@@ -374,6 +372,53 @@ public class DevinMoneyApp {
                             System.out.println("Contate o Gerente de sua conta.");
                             System.out.println("");
                         }
+
+                    }
+
+                } else {
+                    System.out.println("");
+                    System.out.println("Digite somente numeros!");
+                }
+            }
+            // Relatórios
+            if (opcao == 7) {
+                System.out.println("");
+                System.out.println("Área de relatórios");
+                System.out.println("1 - Contas cadastradas   2 - Contas negativas   3 - Total Investido");
+                System.out.println("4 - Transações por Cliente");
+                System.out.println("");
+                System.out.println("Escolha a opção");
+                String entrada = inicio.next();
+                if (entrada.matches("^[0-9]+")) {
+
+                    // Contas cadastradas
+                    if (entrada.equals("1")) {
+                        System.out.println("");
+                        conta.forEach(System.out::print);
+                    }
+
+                    // Contas negativas
+                    if (entrada.equals("2")) {
+                        System.out.println("");
+                        for (Conta conta2 : conta) {
+                            if (conta2.getSaldo() < 0) {
+                                System.out.println(conta2);
+                                c = conta2;
+                            }
+                        }
+                        if (c == null) {
+                            System.out.println("Nenhuma conta negativa! ");
+                        }
+                    }
+
+                    // Total Investido
+                    if (entrada.equals("3")) {
+                        System.out.println("");
+                        System.out.println("O banco tem um total investido de R$ " + totalInvestido);
+                    }
+
+                    // Transações por Cliente
+                    if (entrada.equals("3")) {
 
                     }
 

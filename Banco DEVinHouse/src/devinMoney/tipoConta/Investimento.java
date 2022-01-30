@@ -10,8 +10,9 @@ public class Investimento extends Conta {
     private double valorInvestido;
 
     public Investimento(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia,
-            double saldo) {
+            double saldo, double valorInvestido) {
         super(tipo, nome, cpf, renda, conta, agencia, saldo);
+        this.valorInvestido = valorInvestido;
 
     }
 
@@ -37,7 +38,10 @@ public class Investimento extends Conta {
                 + "CPF: " + getCpf() + "\n"
                 + "Renda: " + getRenda() + "\n"
                 + "Agencia: " + getAgencia() + "\n"
-                + "Conta: " + getNumeroConta() + "\n";
+                + "Conta: " + getNumeroConta() + "\n"
+                + "Tipo da Conta: " + getTipo() + "\n"
+                + "Saldo: " + getSaldo() + "\n"
+                + "Valor Investido: " + getValorInvestido() + "\n" + "\n";
     }
 
     @Override
