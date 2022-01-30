@@ -1,5 +1,6 @@
 package devinMoney;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,12 +26,17 @@ public class DevinMoneyApp {
         ArrayList<TodasOperacoes> todasOperacoes = new ArrayList<TodasOperacoes>();
 
         Corrente c1 = new Corrente("C", "Presuntinho", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
-                0);
-        Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0);
-        Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0, 0);
-        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, -2000, 0);
-        Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.FLORIANOPOLIS_001, 0);
-        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 0, 0);
+                0, LocalDate.of(1999, 1, 1));
+        Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0,
+                LocalDate.of(1999, 1, 1));
+        Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0, 0,
+                LocalDate.of(1999, 1, 1));
+        Corrente c2 = new Corrente("C", "Popeye", "44444444444", 4000, "0004", Agencia.SAO_JOSE_002, -2000, 0,
+                LocalDate.of(1999, 1, 1));
+        Poupanca p2 = new Poupanca("P", "Simão", "55555555555", 5000, "0005", Agencia.FLORIANOPOLIS_001, 0,
+                LocalDate.of(1999, 1, 1));
+        Investimento i2 = new Investimento("I", "Pumba", "66666666666", 6000, "0006", Agencia.SAO_JOSE_002, 0, 0,
+                LocalDate.of(1999, 1, 1));
 
         conta.add(c1);
         conta.add(p1);
@@ -40,11 +46,22 @@ public class DevinMoneyApp {
         conta.add(i2);
 
         do {
+            System.out.println("*************************************************************************");
+            System.out.println("******************************      *    ********************************");
+            System.out.println("*****************************      **      ******************************");
+            System.out.println("****************************     *  *       *****************************");
+            System.out.println("***************************         *        ****************************");
+            System.out.println("****************************        *       *****************************");
+            System.out.println("*****************************       *      ******************************");
+            System.out.println("*******************************   * * *   *******************************");
+            System.out.println("*************************************************************************");
             System.out.println("");
             System.out.println("*************************************************************************");
-            System.out.println("***                         Bem vindo                                 ***");
+            System.out.println("***                          Bem vindo                                ***");
+            System.out.println("***                         Devin Money                               ***");
+            System.out.println("***                                                                   ***");
             System.out.println("***     1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência       ***");
-            System.out.println("***     5 - Alterar dados   6 - Investimentos  7 - Relatórios         ***");
+            System.out.println("***     5 - Alterar dados   6 - Investimentos  7 - Relatórios/Extrato ***");
             System.out.println("***     9 - para sair                                                 ***");
             System.out.println("*************************************************************************");
             System.out.println("");
@@ -65,7 +82,7 @@ public class DevinMoneyApp {
                             conta2.saque(valorSaque);
                             TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
                                     conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
-                                    TipoOp.SAQUE, valorSaque);
+                                    TipoOp.SAQUE, valorSaque, LocalDate.now());
                             todasOperacoes.add(o);
                             c = conta2;
                         }
@@ -95,7 +112,7 @@ public class DevinMoneyApp {
                             c = conta2;
                             TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
                                     conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
-                                    TipoOp.DEPOSITO, valorDep);
+                                    TipoOp.DEPOSITO, valorDep, LocalDate.now());
                             todasOperacoes.add(o);
                         }
                     }
@@ -119,7 +136,7 @@ public class DevinMoneyApp {
                             c = conta2;
                             TodasOperacoes o = new TodasOperacoes(conta2.getTipo(), conta2.getNome(), conta2.getCpf(),
                                     conta2.getRenda(), conta2.getNumeroConta(), conta2.getAgencia(), conta2.getSaldo(),
-                                    TipoOp.SALDO, 0);
+                                    TipoOp.SALDO, 0, LocalDate.now());
                             todasOperacoes.add(o);
                             c = conta2;
                         }
@@ -162,7 +179,7 @@ public class DevinMoneyApp {
                                                             conta2.getRenda(), conta2.getNumeroConta(),
                                                             conta2.getAgencia(),
                                                             conta2.getSaldo(),
-                                                            TipoOp.TRASNFERENCIA, valorSaque);
+                                                            TipoOp.TRASNFERENCIA, valorSaque, LocalDate.now());
                                                     todasOperacoes.add(o);
                                                     c = conta2;
                                                 }
@@ -200,7 +217,7 @@ public class DevinMoneyApp {
                                                             conta2.getRenda(),
                                                             conta2.getNumeroConta(), conta2.getAgencia(),
                                                             conta2.getSaldo(),
-                                                            TipoOp.TRASNFERENCIA, valorSaque);
+                                                            TipoOp.TRASNFERENCIA, valorSaque, LocalDate.now());
                                                     todasOperacoes.add(o);
                                                     c = conta2;
                                                 }
@@ -259,7 +276,7 @@ public class DevinMoneyApp {
                                         conta1.getCpf(),
                                         conta1.getRenda(), conta1.getNumeroConta(), conta1.getAgencia(),
                                         conta1.getSaldo(),
-                                        TipoOp.ALTERA_DADOS, 0);
+                                        TipoOp.ALTERA_DADOS, 0, LocalDate.now());
                                 todasOperacoes.add(o);
 
                             }
@@ -336,7 +353,7 @@ public class DevinMoneyApp {
                                                 c.getCpf(),
                                                 c.getRenda(), c.getNumeroConta(), c.getAgencia(),
                                                 c.getSaldo(),
-                                                TipoOp.INVESTIMENTO, valorI);
+                                                TipoOp.INVESTIMENTO, valorI, LocalDate.now());
                                         todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
@@ -371,7 +388,7 @@ public class DevinMoneyApp {
                                                 c.getCpf(),
                                                 c.getRenda(), c.getNumeroConta(), c.getAgencia(),
                                                 c.getSaldo(),
-                                                TipoOp.INVESTIMENTO, valorI);
+                                                TipoOp.INVESTIMENTO, valorI, LocalDate.now());
                                         todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
@@ -407,7 +424,7 @@ public class DevinMoneyApp {
                                                 c.getCpf(),
                                                 c.getRenda(), c.getNumeroConta(), c.getAgencia(),
                                                 c.getSaldo(),
-                                                TipoOp.INVESTIMENTO, valorI);
+                                                TipoOp.INVESTIMENTO, valorI, LocalDate.now());
                                         todasOperacoes.add(o);
                                     }
                                     if (num.equals("2")) {
@@ -442,7 +459,7 @@ public class DevinMoneyApp {
                 System.out.println("");
                 System.out.println("Área de relatórios");
                 System.out.println("1 - Contas cadastradas   2 - Contas negativas   3 - Total Investido");
-                System.out.println("4 - Transações por Cliente");
+                System.out.println("4 - Transações/Extrato por Cliente   5 - Histórico de todas transações do banco");
                 System.out.println("");
                 System.out.println("Escolha a opção");
                 String entrada = inicio.next();
@@ -489,6 +506,13 @@ public class DevinMoneyApp {
                             System.out.println("");
                             System.out.println("Digite somente numeros!");
                         }
+
+                    }
+
+                    // Histórico de todas transações do banco
+                    if (entrada.equals("5")) {
+
+                        todasOperacoes.forEach(System.out::print);
 
                     }
 

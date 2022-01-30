@@ -9,8 +9,9 @@ public class Poupanca extends Conta {
 
     private LocalDate tempo;
 
-    public Poupanca(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia, double saldo) {
-        super(tipo, nome, cpf, renda, conta, agencia, saldo);
+    public Poupanca(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia, double saldo,
+            LocalDate dataDaOperacao) {
+        super(tipo, nome, cpf, renda, conta, agencia, saldo, dataDaOperacao);
 
     }
 
@@ -30,7 +31,8 @@ public class Poupanca extends Conta {
                 + "Agencia: " + getAgencia() + "\n"
                 + "Conta: " + getNumeroConta() + "\n"
                 + "Tipo Conta: " + getTipo() + "\n"
-                + "Saldo: " + getSaldo() + "\n" + "\n";
+                + "Saldo: " + getSaldo() + "\n"
+                + "Data: " + getDataDaOperacao() + "\n" + "\n";
     }
 
     @Override

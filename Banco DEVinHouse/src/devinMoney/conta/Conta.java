@@ -1,5 +1,7 @@
 package devinMoney.conta;
 
+import java.time.LocalDate;
+
 public abstract class Conta {
 
     private String tipo;
@@ -9,9 +11,10 @@ public abstract class Conta {
     private String numeroConta;
     private Agencia agencia;
     private double saldo;
+    private LocalDate dataDaOperacao;
 
     public Conta(String tipo, String nome, String cpf, double renda, String numeroConta, Agencia agencia,
-            double saldo) {
+            double saldo, LocalDate dataDaOperacao) {
         this.tipo = tipo;
         this.nome = nome;
         this.cpf = cpf;
@@ -19,6 +22,7 @@ public abstract class Conta {
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
+        this.dataDaOperacao = dataDaOperacao;
     }
 
     public String getTipo() {
@@ -75,6 +79,14 @@ public abstract class Conta {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public LocalDate getDataDaOperacao() {
+        return dataDaOperacao;
+    }
+
+    public void setDataDaOperacao(LocalDate dataDaOperacao) {
+        this.dataDaOperacao = dataDaOperacao;
     }
 
     public abstract void saqueCorrente(double valor);

@@ -1,5 +1,7 @@
 package devinMoney.tipoConta;
 
+import java.time.LocalDate;
+
 import devinMoney.conta.Agencia;
 import devinMoney.conta.Conta;
 
@@ -9,8 +11,8 @@ public class Corrente extends Conta {
     private double limiteEspecial;
 
     public Corrente(String tipo, String nome, String cpf, double renda, String conta, Agencia agencia,
-            double limiteEspecial, double saldo) {
-        super(tipo, nome, cpf, renda, conta, agencia, saldo);
+            double limiteEspecial, double saldo, LocalDate datadaOperacao) {
+        super(tipo, nome, cpf, renda, conta, agencia, saldo, datadaOperacao);
         this.limiteEspecial = limiteEspecial;
     }
 
@@ -39,7 +41,9 @@ public class Corrente extends Conta {
                 + "Conta: " + getNumeroConta() + "\n"
                 + "Tipo da Conta: " + getTipo() + "\n"
                 + "Saldo: " + getSaldo() + "\n"
-                + "Limite especial: " + Math.abs(getLimiteEspecial()) + "\n" + "\n";
+                + "Data: " + getDataDaOperacao() + "\n"
+                + "Limite especial: " + Math.abs(getLimiteEspecial()) + "\n"
+                + "Data: " + getDataDaOperacao() + "\n" + "\n";
     }
 
     // saque conta corrente
