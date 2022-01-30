@@ -20,7 +20,7 @@ public class DevinMoneyApp {
         Scanner inicio = new Scanner(System.in);
         ArrayList<Conta> conta = new ArrayList<Conta>();
 
-        Corrente c1 = new Corrente("C", "Perna Longa", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
+        Corrente c1 = new Corrente("C", "Presuntinho", "11111111111", 1000, "0001", Agencia.FLORIANOPOLIS_001, -1000,
                 0);
         Poupanca p1 = new Poupanca("P", "Patolino", "22222222222", 2000, "0002", Agencia.SAO_JOSE_002, 0);
         Investimento i1 = new Investimento("I", "Simba", "33333333333", 3000, "0003", Agencia.FLORIANOPOLIS_001, 0);
@@ -41,11 +41,14 @@ public class DevinMoneyApp {
         // }
 
         do {
-            System.out.println(" ");
-            System.out.println("Bem vindo");
-            System.out.println("1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência");
-            System.out.println("9 para sair");
-            System.out.println(" ");
+            System.out.println("");
+            System.out.println("*************************************************************************");
+            System.out.println("***                         Bem vindo                                 ***");
+            System.out.println("***     1 - Sacar  2 - Depositar   3 - Saldo   4 - Tranferência       ***");
+            System.out.println("***     5 - Alterar dados   9 - para sair                             ***");
+            System.out.println("***                                                                   ***");
+            System.out.println("*************************************************************************");
+            System.out.println("");
             opcao = inicio.nextInt();
             Conta c = null;
             // saque
@@ -172,6 +175,32 @@ public class DevinMoneyApp {
                 if (c == null) {
                     System.out.println("");
                     System.out.println("Conta não existe, digite uma conta válida!");
+                }
+
+            }
+            // altera dados, somente o nome pode ser alterado, os outros campos não pois são
+            // dados da conta
+            if (opcao == 5) {
+                System.out.println("");
+                System.out.println("Alterar dados cadastrais");
+                System.out.println("Digite a sua conta");
+                String num = inicio.next();
+                for (Conta conta1 : conta) {
+                    if (conta1.validaConta(num) == true) {
+                        System.out.println("Nome da conta atual: " + conta1.getNome());
+                        System.out.println("Deseja alterar?");
+                        System.out.println("1 - sim    2 - não");
+                        String escolha = inicio.next();
+                        if (escolha.equals("1")) {
+                            System.out.println("Digite seu nome");
+                            String novo = inicio.next();
+                            conta1.setNome(novo);
+                            System.out.println("Seu nome foi alterado para " + conta1.getNome());
+                            System.out.println("");
+                        }
+
+                    }
+
                 }
 
             }
