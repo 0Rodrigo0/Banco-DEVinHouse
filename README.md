@@ -17,11 +17,11 @@ Obrigado!
 # Requisitos do Projeto
 
 A aplicação deve contemplar os seguintes requisitos:
-● O sistema deverá ser desenvolvido em JAVA.
-● O sistema deve seguir o Roteiro da Aplicação.
-● O desenvolvimento das mensagens de saída do banco, esperando pela ação do usuário;
-● Captura da interação do usuário via entrada padrão;
-● O sistema deverá ser apresentado diretamente na linha de comando;
+- O sistema deverá ser desenvolvido em JAVA.
+- O sistema deve seguir o Roteiro da Aplicação.
+- O desenvolvimento das mensagens de saída do banco, esperando pela ação do usuário;
+- Captura da interação do usuário via entrada padrão;
+- O sistema deverá ser apresentado diretamente na linha de comando;
 
 
 # Roteiro da aplicação 
@@ -36,36 +36,29 @@ negativo durante um período de tempo. O sistema deve definir o total do cheque
 especial, conforme a renda mensal do correntista.
 Extrato das transações
 
-- Conta poupança
+- Conta poupança:
 ○ Na conta poupança o cliente não tem direito ao cheque especial.
 ○ Na conta poupança, o cliente poderá simular quanto o seu valor renderá em um
 determinado tempo, para isso, o cliente deve informar a quantidade de tempo (em
 meses) e a rentabilidade anual da poupança. Por exemplo, se o cliente deseja
 saber a rentabilidade em 6 meses é preciso calcular o rendimento proporcional ao
-valor mensal.
-○ Extrato das transações
-● Conta investimento
-○ Neste tipo de conta, o cliente poderá escolher um tipo de investimento e o sistema
+valor mensal. Extrato das transações.
+
+- Conta investimento:
+Neste tipo de conta, o cliente poderá escolher um tipo de investimento e o sistema
 deve apresentar o rendimento anual do investimento solicitado.
-○ O cliente poderá simular o rendimento do seu valor, levando em consideração o
+ O cliente poderá simular o rendimento do seu valor, levando em consideração o
 rendimento do investimento escolhido.
-Todas as contas devem ser derivadas da classe Conta, que possui os seguintes atributos
+ Todas as contas devem ser derivadas da classe Conta, que possui os seguintes atributos
 e métodos:
-● Conta
-○ Atributos
-○ Nome
-○ CPF (é necessário validar o CPF)
-○ Renda mensal
-○ Conta (o sistema deverá gerar um número da conta sequencial)
-○ Agência
-■ Atualmente o banco possui duas agências:
-4
-● 001 - Florianópolis
-● 002 - São José
-○ Saldo
-● Métodos
-○ Saque
-○ Depósito
+
+- Conta:
+ Atributos: Nome, CPF (é necessário validar o CPF), Renda mensal, Conta (o sistema deverá gerar um número da conta sequencial), Agência
+- Atualmente o banco possui duas agências: 001 - Florianópolis, 002 - São José.
+- Saldo.
+- Métodos: 
+- Saque
+- Depósito
 ○ Saldo
 ○ Extrato
 ○ Transferir
