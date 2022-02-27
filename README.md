@@ -56,31 +56,27 @@ e métodos:
  Atributos: Nome, CPF (é necessário validar o CPF), Renda mensal, Conta (o sistema deverá gerar um número da conta sequencial), Agência
 - Atualmente o banco possui duas agências: 001 - Florianópolis, 002 - São José.
 - Saldo.
-- Métodos: 
-- Saque
-- Depósito
-○ Saldo
-○ Extrato
-○ Transferir
-○ Alterar dados cadastrais (Exceto CPF)
+- Métodos: Saque, Depósito, Saldo, Extrato, Transferir, Alterar dados cadastrais (Exceto CPF)
+
+
 O banco também deseja manter um histórico das transações, que deverá armazenar (utilizar
 conceitos de composição):
-● Dados Conta Origem
-● Dados Conta Destino
-● Valor
-● Data (pegar a data e hora do sistema)
+- Dados Conta Origem.
+- Dados Conta Destino.
+- Valor.
+- Data (pegar a data e hora do sistema).
+
+
 O sistema também deverá apresentar os seguintes relatórios:
-● Listar todas as contas
-○ Correntes
-○ Poupanças
-○ ou Investimento
-● Contas com saldo negativo
-● Total do valor investido
-● Todas as transações de um determinado cliente.
+- Listar todas as contas: Correntes, Poupanças, Investimento.
+- Contas com saldo negativo
+- Total do valor investido
+- Todas as transações de um determinado cliente.
+
 É importante que algumas transações não possam ser executadas em caso de problemas
 percebidos em suas operações:
-● transferência entre contas cujo montante supera o saldo acrescido do limite do cheque
+- transferência entre contas cujo montante supera o saldo acrescido do limite do cheque
 especial da conta de origem
-● Operações em momentos anteriores ao dia/hora da transação
-● transferências durante o final de semana (sábado ou domingo)
-● não é possível fazer transferências para si próprio
+- Operações em momentos anteriores ao dia/hora da transação
+- transferências durante o final de semana (sábado ou domingo)
+- não é possível fazer transferências para si próprio
